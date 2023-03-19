@@ -1,14 +1,21 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
-defineProps<{ msg: string }>()
+import { ref, defineProps } from 'vue'
+defineProps({
+  msg: {
+    type: String,
+    default: 'hhh'
+  }
+})
+const emit = defineEmits(['handleChange'])
 
 const count = ref(0)
+function changeMsg() {
+  emit('handleChange')
+}
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
-
+  <h1 @click="changeMsg">{{ msg }}</h1>
   <p>
     Recommended IDE setup:
     <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
